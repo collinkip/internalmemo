@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  forestore:
+    image: forestore
+    build:
+      context: .
+      dockerfile: ./Dockerfile
