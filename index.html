@@ -5,7 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <!-- Compiled and minified CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-  <title>GameGuidez</title>
+  <link rel="stylesheet" href="style.css">
+  <title>FLOWBITE</title>
 </head>
 <body class="grey lighten-3">
 
@@ -14,16 +15,16 @@
     <div class="nav-wrapper container">
      
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li class="logged-in">
+          <li class="logged-in display-none">
             <a href="#" class="grey-text modal-trigger" data-target="modal-account">Account</a>
           </li>
-          <li class="logged-in">
+          <li class="logged-in display-none">
             <a href="#" class="grey-text" id="logout">Logout</a>
           </li>
-          <li class="logged-in">
-            <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Guide</a>
+          <li class="logged-in display-none">
+            <a href="#" class="grey-text modal-trigger" data-target="modal-create">Create Memo</a>
           </li>
-          <li class="logged-out">
+          <li class="logged-out display-none">
             <a href="#" class="grey-text modal-trigger" data-target="modal-login">Login</a>
           </li>
           <li class="logged-out">
@@ -71,6 +72,31 @@
     </div>
   </div>
 
+
+  <div class="edit-model model-wrapper">
+    <div class="model">
+        <div class="model-header"><h3>Edit user</h3></div>
+        <div class="model-body">
+            <form class="form" autocomplete="off">
+                <input type="text" name="fullname" placeholder="full Name" required>
+                <div class="input-field">
+                  <input type="text" id="edit-department" list="depatments"required />
+                  <label for="edit-password">Choose department</label>
+                  <datalist id="depatments">
+                    <option value="Accounting">Accounting</option>
+                    <option value="security">security</option>
+                    <option value="engineering">engineering</option>
+                    <option value="sales">sales</option>
+                  </datalist>
+                </div>
+                <input type="email" name="Email" placeholder="email" required>
+                <input type="number" name="phone" placeholder="phone" required>
+                <button class="btn btn-model">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
   <!-- LOGIN MODAL -->
   <div id="modal-login" class="modal">
     <div class="modal-content">
@@ -102,24 +128,39 @@
             <th>phone</th>
             <th>Action</th>
         </tr>
+      <table class="table-user">
         <tr>
-    
+            <th>Full name</th>
+            <th> Department</th>
+            <th>Email</th>
+            <th>phone</th>
+            <th>Action</th>
+        </tr>
     </table>
+    <!-- <table class="table-users">
+      <tr>
+          <th>Full name</th>
+          <th> Department</th>
+          <th>Email</th>
+          <th>phone</th>
+          <th>Action</th>
+      </tr>
+  </table> -->
     </div>
   </div>
 
-  <!-- CREATE GUIDE MODAL -->
+  <!-- CREATE memo MODAL -->
   <div id="modal-create" class="modal">
     <div class="modal-content">
-      <h4>Create Guide</h4><br />
+      <h4>Create A Memo</h4><br />
       <form id="create-form">
         <div class="input-field">
           <input type="text" id="title" required>
-          <label for="title">Guide Title</label>
+          <label for="title">Memo Title</label>
         </div>
         <div class="input-field">
           <textarea id="content" class="materialize-textarea" required></textarea>
-          <label for="content">Guide Content</label>
+          <label for="content">Memo Content</label>
         </div>
         <button class="btn yellow darken-2 z-depth-0">Create</button>
       </form>

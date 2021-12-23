@@ -1,0 +1,26 @@
+
+.edit-model{
+    width: 50%;
+    display: flex;
+
+}
+.model{
+    position: relative;
+    background: white;
+    backdrop-filter: blur(10px);
+    text-align: center;
+    padding: 10rem 2rem 5rem 2rem;
+    width: 25rem;
+    margin: 5rem auto;
+    animation-name: animatetop;
+    animation-duration: 0.3s;
+    -webkit-box-shadow: 0px 4px  22px -6px rgb(0, 0, 0);
+    -moz-box-shadow:0px 4px  22px -6px rgb(0, 0, 0) ;
+    box-shadow: 0px 4px  22px -6px rgb(26, 22, 22);
+}
+.edit-model{
+    display: none;
+}
+.modal-show{
+    display: block;
+}

@@ -4,20 +4,35 @@ const loggedoutlinks=document.querySelectorAll('.logged-out');
 const loggedinlinks=document.querySelectorAll('.logged-in');
 
 const accountDetails=document.querySelector('.account-details');
-
+const tableUsers=document.querySelector('.table-user');
+const editModel=document.querySelector('.model-wrapper');
+const editModalForm=document.querySelector('.edit-model form');
 
 
 const setupUI=(user)=>{
     if(user){
         //output userdata
         db.collection('userdata').doc(user.uid).get().then(doc=>{
+            // const html=`
+            //     <div>logged in as ${user.email}</div>
+            //     <div>Department    :${doc.data().department}</div>
+            //     <div>Fullname   :${doc.data().fullname}</div>
+            //     <div>Phone     :${doc.data().phone}</div>
+            // `;
             const html=`
-                <div>logged in as ${user.email}</div>
-                <div>Department    :${doc.data().department}</div>
-                <div>Fullname   :${doc.data().fullname}</div>
-                <div>Phone     :${doc.data().phone}</div>
-            `;
-            accountDetails.innerHTML=html;
+                 <tr>
+                     <td><div>${doc.data().fullname}</div></td>
+                     <td><div>${doc.data().department}</div></td>
+                     <td><div>${user.email}</div></td>
+                     <td><div>${doc.data().phone}</div></td>
+                     <td>
+                         <button class="btn btn-edit" id="btn-edit">Edit</button>
+                         <button class="btn btn-delete">Delete</button>
+
+                     </td>
+                </tr>
+    `;
+    tableUsers.innerHTML=html;
         })
 
         //acount info
@@ -75,3 +90,11 @@ document.addEventListener('DOMContentLoaded', function() {
     M.Collapsible.init(items);
   
   });
+
+
+  //edit userdata
+  const btnEddit=document.querySelector('#btn-edit');
+  btnEddit.addEventListener('click',()=>{
+      console.log("where are you?")
+  })
+  

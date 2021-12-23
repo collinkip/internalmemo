@@ -57,6 +57,8 @@ signupForm.addEventListener('submit',(e)=>{
             fullname:signupForm['signup-fullname'].value,
             phone:signupForm['signup-phone'].value,
             department:signupForm['signup-department'].value
+        }).catch(err=>{
+            alert(err)
         });
         
     }).then(()=>{
@@ -64,6 +66,8 @@ signupForm.addEventListener('submit',(e)=>{
         M.Modal.getInstance(modal).close();
         signupForm.reset(); 
 
+    }).catch(err=>{
+        alert(err);
     });
 
 });
@@ -76,7 +80,8 @@ const logout=document.querySelector('#logout');
 logout.addEventListener('click',(e)=>{ 
     e.preventDefault();
     auth.signOut().then(()=>{
-    })
+    });
+    
 
 });
 
