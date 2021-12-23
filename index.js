@@ -9,11 +9,21 @@ const accountDetails=document.querySelector('.account-details');
 
 const setupUI=(user)=>{
     if(user){
+        //output userdata
+        db.collection('userdata').doc(user.uid).get().then(doc=>{
+            const html=`
+                <div>logged in as ${user.email}</div>
+                <div>Department    :${doc.data().department}</div>
+                <div>Fullname   :${doc.data().fullname}</div>
+                <div>Phone     :${doc.data().phone}</div>
+            `;
+            accountDetails.innerHTML=html;
+        })
+
         //acount info
-        const html=`
-        <div>logged in as ${user.email}</div>
-        `;
-        accountDetails.innerHTML=html;
+        
+        
+
         loggedinlinks.forEach(item=>item.style.display='block');
         loggedoutlinks.forEach(item=>item.style.display='none');
     }
