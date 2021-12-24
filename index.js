@@ -8,31 +8,48 @@ const tableUsers=document.querySelector('.table-user');
 const editModel=document.querySelector('.model-wrapper');
 const editModalForm=document.querySelector('.edit-model form');
 
+let id;
+
+
 
 const setupUI=(user)=>{
     if(user){
         //output userdata
+        
         db.collection('userdata').doc(user.uid).get().then(doc=>{
-            // const html=`
-            //     <div>logged in as ${user.email}</div>
-            //     <div>Department    :${doc.data().department}</div>
-            //     <div>Fullname   :${doc.data().fullname}</div>
-            //     <div>Phone     :${doc.data().phone}</div>
-            // `;
-            const html=`
-                 <tr>
+                 const html=`
+                 <tr data-id='${doc.id}'>
                      <td><div>${doc.data().fullname}</div></td>
                      <td><div>${doc.data().department}</div></td>
                      <td><div>${user.email}</div></td>
                      <td><div>${doc.data().phone}</div></td>
                      <td>
-                         <button class="btn btn-edit" id="btn-edit">Edit</button>
+                         <button class="btn btn-edit" id="btn-edit"><a href="#" class="white-text modal-trigger" data-target="modal-edit">Edit</a></button>
                          <button class="btn btn-delete">Delete</button>
 
                      </td>
                 </tr>
-    `;
-    tableUsers.innerHTML=html;
+            `;
+            tableUsers.innerHTML=html;
+            const deletebutton=document.querySelector('.btn-delete');
+            deletebutton.addEventListener('click',()=>{
+                db.collection('userdata').doc(`${doc.id}`).delete().then (()=>{
+                    console.log('user deleted');
+                });
+                
+                
+            });
+            const edit=document.querySelector('.btn-edit');
+            edit.addEventListener('click',()=>{
+                id=doc.id;
+                console.log(doc.data());
+                console.log(id);
+                editModalForm.fullname.value=doc.data().fullname;
+                editModalForm.phone.value=doc.data().phone;
+                editModalForm.email.value=user.email;
+                editModalForm.department.value=doc.data().department;
+                
+            });
         })
 
         //acount info
@@ -49,7 +66,6 @@ const setupUI=(user)=>{
 
     }
 }
-
 
 const setupGuides=(data)=>{
 
@@ -89,12 +105,24 @@ document.addEventListener('DOMContentLoaded', function() {
     var items = document.querySelectorAll('.collapsible');
     M.Collapsible.init(items);
   
-  });
+});
+editModalForm.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    db.collection('userdata').doc(id).update({
+        fullname:editModalForm.fullname.value,
+        department:editModalForm.department.value,
+        phone:editModalForm.phone.value
+    }).catch(err=>{
+        alert(err);
+    });
 
+});
 
-  //edit userdata
-  const btnEddit=document.querySelector('#btn-edit');
-  btnEddit.addEventListener('click',()=>{
-      console.log("where are you?")
-  })
   
+
+
+
+
+
+
+

@@ -73,30 +73,42 @@
   </div>
 
 
-  <div class="edit-model model-wrapper">
-    <div class="model">
-        <div class="model-header"><h3>Edit user</h3></div>
-        <div class="model-body">
-            <form class="form" autocomplete="off">
-                <input type="text" name="fullname" placeholder="full Name" required>
-                <div class="input-field">
-                  <input type="text" id="edit-department" list="depatments"required />
-                  <label for="edit-password">Choose department</label>
-                  <datalist id="depatments">
-                    <option value="Accounting">Accounting</option>
-                    <option value="security">security</option>
-                    <option value="engineering">engineering</option>
-                    <option value="sales">sales</option>
-                  </datalist>
-                </div>
-                <input type="email" name="Email" placeholder="email" required>
-                <input type="number" name="phone" placeholder="phone" required>
-                <button class="btn btn-model">Submit</button>
-            </form>
-        </div>
-    </div>
-</div>
 
+  <!-- EdIT MODAL -->
+  <div id="modal-edit" class="modal edit-model">
+    <div class="modal-content">
+      <h4>EDIT USER DATA</h4><br />
+      <form id="edit-form" autocomplete="on">
+        <div class="input-field">
+          <input type="email" name="email"id="edit-email" required />
+        </div>
+        <div class="input-field">
+          <input type="text" name="fullname" id="edit-fullname" required />
+        </div>
+        <div class="input-field">
+          <input type="number" name="phone" id="edit-phone" required />
+        </div>
+        <div class="input-field">
+          <input type="text" name="department" id="edit-department" list="depatments"required />
+          <datalist id="depatments">
+            <option value="Accounting">Accounting</option>
+            <option value="security">security</option>
+            <option value="engineering">engineering</option>
+            <option value="sales">sales</option>
+          </datalist>
+        </div>
+         <!-- <div class="input-field">
+          <input type="password" id="edit-password" required />
+          <label for="edit-password">Choose password</label>
+        </div> -->
+
+        <button class="btn yellow darken-2 z-depth-0">Submit</button>
+      </form>
+    </div>
+  </div>
+
+
+  
   <!-- LOGIN MODAL -->
   <div id="modal-login" class="modal">
     <div class="modal-content">
