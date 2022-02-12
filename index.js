@@ -24,7 +24,6 @@ const setupUI=(user)=>{
                      <td><div>${user.email}</div></td>
                      <td><div>${doc.data().phone}</div></td>
                      <td>
-                         <button class="btn btn-edit" id="btn-edit"><a href="#" class="white-text modal-trigger" data-target="modal-edit">Edit</a></button>
                          <button class="btn btn-delete">Delete</button>
 
                      </td>
